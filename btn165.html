@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTN 165 — Bahoela Tani Nusantara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hutan: #1B2B1E;
+    --hutan-deep: #12200F;
+    --zaitun: #5B6B45;
+    --tanah: #6B4A2F;
+    --krem: #F3EEE1;
+    --krem-warm: #EAE2CE;
+    --emas: #A9762F;
+    --ink: #1C1912;
+    --line: rgba(28,25,18,0.15);
+    --line-light: rgba(243,238,225,0.2);
+    --merah: #9C4A3A;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--krem);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    line-height:1.1;
+    color:var(--hutan-deep);
+    letter-spacing:0.005em;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,238,225,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 32px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.3rem;
+    letter-spacing:0.04em;
+    color:var(--hutan-deep);
+  }
+  nav.links{
+    display:flex; gap:36px;
+    font-size:0.85rem;
+    font-weight:400;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ink);
+    padding-bottom:4px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  nav.links a:hover{ border-color:var(--emas); color:var(--hutan-deep); }
+
+  @media (max-width:760px){
+    nav.links{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--hutan-deep);
+    color:var(--krem);
+    text-align:center;
+  }
+  .hero-inner{
+    max-width:760px; margin:0 auto;
+    padding:140px 32px 120px;
+  }
+  .hero-eyebrow{
+    font-size:0.82rem;
+    letter-spacing:0.12em;
+    color:rgba(243,238,225,0.55);
+    font-weight:400;
+    margin-bottom:28px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.2rem);
+    color:var(--krem);
+    font-weight:500;
+  }
+  .hero-rule{
+    width:48px; height:1px;
+    background:var(--emas);
+    margin:32px auto;
+  }
+  .hero p{
+    max-width:44ch;
+    margin:0 auto;
+    font-size:1.1rem;
+    font-weight:300;
+    color:rgba(243,238,225,0.75);
+  }
+  .hero-cta{
+    margin-top:44px;
+    display:flex; gap:24px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 30px;
+    font-weight:400;
+    font-size:0.88rem;
+    letter-spacing:0.03em;
+    text-decoration:none;
+    border-radius:0;
+    border:1px solid transparent;
+    transition:opacity .2s ease, border-color .2s ease;
+  }
+  .btn-primary{
+    background:var(--emas);
+    color:var(--krem);
+  }
+  .btn-primary:hover{ opacity:0.88; }
+  .btn-ghost{
+    border-color:rgba(243,238,225,0.4);
+    color:var(--krem);
+  }
+  .btn-ghost:hover{ border-color:var(--krem); }
+
+  /* ---------- Section basics ---------- */
+  section{ padding:110px 0; }
+  .section-label{
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    font-weight:500;
+    color:var(--emas);
+    margin-bottom:18px;
+  }
+  .lead{
+    font-size:2rem;
+    font-weight:500;
+    color:var(--hutan-deep);
+    max-width:22ch;
+    margin-bottom:32px;
+  }
+  .prose{
+    max-width:60ch;
+    font-size:1.05rem;
+    font-weight:300;
+    color:#3a3527;
+  }
+  .prose + .prose{ margin-top:16px; }
+
+  /* ---------- Tentang ---------- */
+  .tentang-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width:820px){ .tentang-grid{ grid-template-columns:1fr; } }
+  .name-origin{
+    border-left:1px solid var(--emas);
+    padding-left:22px;
+    margin-top:28px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--tanah);
+  }
+
+  /* ---------- Progres ---------- */
+  .progres{ background:var(--krem-warm); }
+  .progres-top{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width:820px){ .progres-top{ grid-template-columns:1fr; } }
+  .countdown-row{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    margin-top:36px;
+  }
+  .countdown-unit .num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    font-weight:500;
+    color:var(--hutan-deep);
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+  .countdown-unit .unit-label{
+    margin-top:8px;
+    font-size:0.76rem;
+    letter-spacing:0.08em;
+    color:var(--tanah);
+    font-weight:500;
+  }
+  .progress-track{
+    margin-top:36px;
+    height:2px;
+    background:rgba(107,74,47,0.2);
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--emas);
+    transition:width .6s ease;
+  }
+  .progress-caption{
+    margin-top:14px;
+    font-size:0.85rem;
+    color:var(--tanah);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-weight:400;
+  }
+
+  .log-box{
+    background:var(--krem);
+    border:1px solid var(--line);
+    padding:36px;
+  }
+  .log-box h3{
+    font-size:1.3rem;
+    font-weight:500;
+    margin-bottom:20px;
+  }
+  .log-form{ display:flex; flex-direction:column; gap:14px; }
+  .log-form textarea{
+    min-height:80px;
+    width:100%;
+    border:none;
+    border-bottom:1px solid var(--line);
+    background:transparent;
+    padding:8px 0;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    font-weight:300;
+    resize:vertical;
+  }
+  .log-form textarea:focus{ outline:none; border-color:var(--emas); }
+  .log-form button{
+    align-self:flex-start;
+    background:transparent;
+    color:var(--hutan-deep);
+    border:1px solid var(--hutan-deep);
+    padding:11px 26px;
+    font-weight:400;
+    font-size:0.84rem;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .log-form button:hover{ background:var(--hutan-deep); color:var(--krem); }
+  .log-list{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    max-height:320px;
+    overflow-y:auto;
+  }
+  .log-entry{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:18px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    font-size:0.9rem;
+    font-weight:300;
+  }
+  .log-entry .log-date{
+    color:var(--tanah);
+    font-weight:500;
+    font-size:0.8rem;
+  }
+  .log-empty{
+    margin-top:22px;
+    font-size:0.88rem;
+    color:var(--tanah);
+    font-weight:300;
+  }
+  .log-status{
+    font-size:0.8rem;
+    color:var(--tanah);
+    margin-top:4px;
+    min-height:1.2em;
+  }
+
+  /* ---------- Visi Misi ---------- */
+  .visimisi{ background:var(--hutan-deep); color:var(--krem); }
+  .visimisi .section-label{ color:var(--emas); }
+  .visimisi .lead{ color:var(--krem); }
+  .visi-block{
+    max-width:58ch;
+    font-size:1.25rem;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    line-height:1.45;
+    color:rgba(243,238,225,0.92);
+    padding:28px 0 52px;
+    border-bottom:1px solid var(--line-light);
+  }
+  .misi-list{ margin-top:44px; display:flex; flex-direction:column; }
+  .misi-item{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:32px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line-light);
+  }
+  @media (max-width:700px){ .misi-item{ grid-template-columns:1fr; gap:8px; } }
+  .misi-item:last-child{ border-bottom:none; }
+  .misi-tag{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--emas);
+  }
+  .misi-item h3{
+    color:var(--krem);
+    font-size:1.25rem;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .misi-item p{
+    color:rgba(243,238,225,0.7);
+    font-size:0.95rem;
+    font-weight:300;
+    max-width:54ch;
+  }
+
+  /* ---------- Kearifan ---------- */
+  .kearifan-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:44px;
+    margin-top:48px;
+  }
+  @media (max-width:820px){ .kearifan-grid{ grid-template-columns:1fr; } }
+  .kearifan-card{ padding-top:24px; border-top:1px solid var(--emas); }
+  .kearifan-card h3{ font-size:1.2rem; font-weight:500; margin-bottom:12px; }
+  .kearifan-card p{ font-size:0.95rem; font-weight:300; color:#3a3527; }
+
+  /* ---------- Produk ---------- */
+  .produk{ background:var(--krem-warm); }
+  .produk-facts{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+    margin-top:44px;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+  }
+  @media (max-width:700px){ .produk-facts{ grid-template-columns:1fr 1fr; } }
+  .fact dt{
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    color:var(--tanah);
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .fact dd{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.6rem;
+    font-weight:500;
+    color:var(--hutan-deep);
+  }
+
+  /* ---------- Nilai ---------- */
+  .nilai{ background:var(--hutan-deep); color:var(--krem); }
+  .nilai .section-label{ color:var(--emas); }
+  .nilai-row{
+    display:flex; flex-wrap:wrap;
+    margin-top:44px;
+    border-top:1px solid var(--line-light);
+  }
+  .nilai-col{
+    flex:1 1 260px;
+    padding:32px 32px 32px 0;
+    border-right:1px solid var(--line-light);
+  }
+  .nilai-col:last-child{ border-right:none; }
+  @media (max-width:760px){
+    .nilai-col{ border-right:none; border-bottom:1px solid var(--line-light); padding:28px 0; }
+  }
+  .nilai-col h3{ color:var(--krem); font-size:1.15rem; font-weight:500; margin-bottom:12px; }
+  .nilai-col p{ color:rgba(243,238,225,0.68); font-size:0.94rem; font-weight:300; }
+
+  /* ---------- Kontak ---------- */
+  .kontak-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+  @media (max-width:820px){ .kontak-grid{ grid-template-columns:1fr; } }
+  .kontak-info dl{ margin-top:28px; display:grid; gap:22px; }
+  .kontak-info dt{ font-size:0.78rem; letter-spacing:0.06em; font-weight:500; color:var(--tanah); }
+  .kontak-info dd{ font-size:1.1rem; font-weight:300; color:var(--ink); margin-top:2px; }
+  .kontak-closing{
+    margin-top:36px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--hutan-deep);
+  }
+  .note{
+    margin-top:28px;
+    font-size:0.85rem;
+    font-weight:300;
+    color:var(--tanah);
+    border-left:1px solid var(--emas);
+    padding-left:16px;
+  }
+
+  form{ display:flex; flex-direction:column; gap:20px; }
+  label{
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    font-weight:500;
+    color:var(--tanah);
+    margin-bottom:8px;
+    display:block;
+  }
+  input, textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid var(--line);
+    background:transparent;
+    padding:10px 0;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    font-weight:300;
+  }
+  input:focus, textarea:focus{ outline:none; border-color:var(--emas); }
+  textarea{ resize:vertical; min-height:100px; }
+  .form-submit{
+    align-self:flex-start;
+    margin-top:6px;
+    background:transparent;
+    color:var(--hutan-deep);
+    border:1px solid var(--hutan-deep);
+    padding:13px 30px;
+    font-weight:400;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .form-submit:hover{ background:var(--hutan-deep); color:var(--krem); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(243,238,225,0.6);
+    padding:56px 0 36px;
+    font-size:0.85rem;
+    font-weight:300;
+  }
+  .footer-row{
+    display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:20px; align-items:center;
+  }
+  .footer-brand{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--krem);
+    font-size:1.1rem;
+    font-weight:500;
+  }
+  .footer-tag{
+    margin-top:6px;
+    font-style:italic;
+    color:rgba(243,238,225,0.45);
+  }
+</style>
+</head>
+<body>
+<script>
+// Fallback: window.storage hanya tersedia di dalam Claude.ai.
+// Kalau website ini dibuka di luar Claude (mis. GitHub Pages), pakai localStorage browser sebagai gantinya.
+if (typeof window.storage === 'undefined') {
+  window.storage = {
+    get: function(key){
+      return Promise.resolve().then(function(){
+        var raw = localStorage.getItem(key);
+        if (raw === null) throw new Error('not found');
+        return { key: key, value: raw, shared: false };
+      });
+    },
+    set: function(key, value){
+      return Promise.resolve().then(function(){
+        localStorage.setItem(key, value);
+        return { key: key, value: value, shared: false };
+      });
+    },
+    delete: function(key){
+      return Promise.resolve().then(function(){
+        localStorage.removeItem(key);
+        return { key: key, deleted: true, shared: false };
+      });
+    },
+    list: function(prefix){
+      return Promise.resolve().then(function(){
+        var keys = [];
+        for (var i = 0; i < localStorage.length; i++){
+          var k = localStorage.key(i);
+          if (!prefix || k.indexOf(prefix) === 0) keys.push(k);
+        }
+        return { keys: keys, prefix: prefix, shared: false };
+      });
+    }
+  };
+}
+</script>
+
+<header>
+  <div class="nav-row">
+    <div class="brand">BTN 165</div>
+    <nav class="links">
+      <a href="#tentang">Tentang</a>
+      <a href="#progres">Progres</a>
+      <a href="keuangan.html">Keuangan</a>
+      <a href="#visi-misi">Visi &amp; Misi</a>
+      <a href="#kearifan">Kearifan Lokal</a>
+      <a href="#produk">Produk</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">BAHOELA TANI NUSANTARA — KALIMANTAN TIMUR</div>
+    <h1>Bertani baheula,<br>panen masa kini</h1>
+    <div class="hero-rule"></div>
+    <p>BTN 165 menghidupkan kembali cara bertani leluhur untuk menanam timun organik di tanah Borneo — tanpa bahan kimia sintetis, tanpa merusak keseimbangan alam.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#visi-misi">Baca visi &amp; misi kami</a>
+      <a class="btn btn-ghost" href="#kontak">Hubungi kami</a>
+    </div>
+  </div>
+</section>
+
+<section class="tentang" id="tentang">
+  <div class="wrap tentang-grid">
+    <div>
+      <div class="section-label">TENTANG BTN 165</div>
+      <h2 class="lead">Nama yang membawa cara lama ke ladang hari ini</h2>
+    </div>
+    <div>
+      <p class="prose">BTN 165 — Bahoela Tani Nusantara — lahir dari satu kata Sunda: <em>baheula</em>, yang berarti "dulu" atau "zaman dahulu". Nama ini membawa semangat kembali ke cara bertani leluhur, sebelum ladang bergantung pada pupuk dan pestisida kimia.</p>
+      <p class="prose">Kini bendera itu berkibar di tanah Borneo, Kalimantan Timur, dengan fokus di hortikultura — khususnya budidaya timun organik. Di tanah yang dekat dengan denyut pembangunan Ibu Kota Nusantara, BTN 165 memilih jalan yang berbeda: menanam sambil menjaga.</p>
+      <div class="name-origin">"Baheula tapi modern" — teknik lama, hasil yang relevan untuk kebutuhan pangan hari ini.</div>
+    </div>
+  </div>
+</section>
+
+<section class="progres" id="progres">
+  <div class="wrap">
+    <div class="section-label">PROGRES SETAHUN DI IKN</div>
+    <h2 class="lead" style="max-width:26ch;">Turun ke lahan sejak 14 Juni, menuju satu tahun penuh</h2>
+
+    <div class="progres-top">
+      <div>
+        <p class="prose">Hitungan mundur menuju satu tahun BTN 165 berkiprah di tanah Kalimantan Timur, dan progres hari demi hari sejak pertama turun ke lahan.</p>
+        <div class="countdown-row" id="countdown-row">
+          <div class="countdown-unit">
+            <div class="num" id="cd-days">–</div>
+            <div class="unit-label">HARI</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="num" id="cd-hours">–</div>
+            <div class="unit-label">JAM</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="num" id="cd-minutes">–</div>
+            <div class="unit-label">MENIT</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="num" id="cd-seconds">–</div>
+            <div class="unit-label">DETIK</div>
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-caption">
+          <span id="progress-day-label">Hari ke-… dari 365</span>
+          <span id="progress-percent-label">…%</span>
+        </div>
+      </div>
+
+      <div class="log-box">
+        <h3>Catatan pencapaian hari ini</h3>
+        <div class="log-form">
+          <textarea id="log-input" placeholder="Tulis apa yang dikerjakan atau dicapai hari ini di lahan…"></textarea>
+          <button type="button" id="log-save">Simpan catatan hari ini</button>
+          <div class="log-status" id="log-status"></div>
+        </div>
+        <div class="log-list" id="log-list">
+          <div class="log-empty">Memuat catatan…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visimisi" id="visi-misi">
+  <div class="wrap">
+    <div class="section-label">VISI &amp; MISI</div>
+    <h2 class="lead">Ke mana arah BTN 165 berjalan</h2>
+    <p class="visi-block">Menjadi pelopor pertanian organik Nusantara di tanah Borneo — memadukan kearifan bertani baheula dengan kearifan lokal Dayak, untuk mendukung ketahanan pangan Kalimantan Timur di era IKN, tanpa mengorbankan kelestarian hutan dan lahan.</p>
+
+    <div class="misi-list">
+      <div class="misi-item">
+        <div class="misi-tag">Napak tilas</div>
+        <div>
+          <h3>Menggali kembali teknik leluhur</h3>
+          <p>Menghidupkan kembali pupuk kandang, kompos, tumpangsari, dan rotasi tanam yang sempat ditinggalkan pertanian modern.</p>
+        </div>
+      </div>
+      <div class="misi-item">
+        <div class="misi-tag">Baheula, modern</div>
+        <div>
+          <h3>Memadukan cara lama dan pengetahuan kini</h3>
+          <p>Kearifan tani leluhur dipadukan dengan pemahaman ekologi masa kini, agar hasil tetap optimal tanpa merusak alam.</p>
+        </div>
+      </div>
+      <div class="misi-item">
+        <div class="misi-tag">Bebas kimia</div>
+        <div>
+          <h3>Kembali ke pupuk dan pestisida alami</h3>
+          <p>Timun ditanam tanpa bahan kimia sintetis, mengandalkan pupuk organik dan pengendalian hama secara hayati.</p>
+        </div>
+      </div>
+      <div class="misi-item">
+        <div class="misi-tag">Tanah warisan</div>
+        <div>
+          <h3>Merawat tanah, bukan mengeksploitasi</h3>
+          <p>Kesuburan tanah gambut dan tanah asam khas Kaltim dijaga agar tetap lestari untuk anak cucu, bukan dikuras habis.</p>
+        </div>
+      </div>
+      <div class="misi-item">
+        <div class="misi-tag">Benih lokal</div>
+        <div>
+          <h3>Melestarikan benih leluhur</h3>
+          <p>Menghidupkan kembali benih-benih varietas lokal yang mulai tersisih oleh dominasi benih hibrida berbasis kimia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kearifan" id="kearifan">
+  <div class="wrap">
+    <div class="section-label">KEARIFAN LOKAL BORNEO</div>
+    <h2 class="lead">Belajar dari tanah dan orang yang lebih dulu menjaganya</h2>
+    <p class="prose">Kalimantan Timur punya tantangan dan kearifannya sendiri — dan BTN 165 belajar dari keduanya sebelum turun ke ladang.</p>
+
+    <div class="kearifan-grid">
+      <div class="kearifan-card">
+        <h3>Tanah gambut &amp; asam</h3>
+        <p>Tanah podsolik khas Borneo kurang cocok dengan pupuk kimia. Pendekatan organik justru lebih sejalan dengan karakter tanah ini.</p>
+      </div>
+      <div class="kearifan-card">
+        <h3>Ladang gilir balik Dayak</h3>
+        <p>Sistem ladang berpindah dan hutan adat <em>tana' ulen</em> menyimpan prinsip yang sama dengan semangat baheula: menjaga siklus alam, bukan mengeksploitasinya.</p>
+      </div>
+      <div class="kearifan-card">
+        <h3>Momentum IKN</h3>
+        <p>Kebutuhan pangan lokal tumbuh cepat. BTN 165 memilih mengisi kebutuhan ini dengan hasil organik, tanpa alih fungsi hutan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="produk" id="produk">
+  <div class="wrap">
+    <div class="section-label">PRODUK UNGGULAN</div>
+    <h2 class="lead" style="max-width:20ch;">Timun organik, dari ladang Borneo</h2>
+    <p class="prose">Timun adalah fokus utama BTN 165 saat ini — ditanam dengan pupuk organik, tanpa pestisida sintetis, dan mengikuti pola tanam yang menjaga kesuburan tanah dari satu musim ke musim berikutnya.</p>
+    <dl class="produk-facts">
+      <div class="fact">
+        <dt>FOKUS TANAM</dt>
+        <dd>Timun</dd>
+      </div>
+      <div class="fact">
+        <dt>METODE</dt>
+        <dd>Organik penuh</dd>
+      </div>
+      <div class="fact">
+        <dt>LOKASI</dt>
+        <dd>Kalimantan Timur</dd>
+      </div>
+      <div class="fact">
+        <dt>PASAR</dt>
+        <dd>Lokal &amp; IKN</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="nilai">
+  <div class="wrap">
+    <div class="section-label">NILAI YANG MENDASARI</div>
+    <h2 class="lead" style="color:var(--krem);">Tiga hal yang tidak pernah ditawar</h2>
+    <div class="nilai-row">
+      <div class="nilai-col">
+        <h3>Harmoni manusia-alam</h3>
+        <p>Bertani dijalankan sebagai bagian dari alam, bukan melawannya — sejalan dengan semangat Tri Hita Karana.</p>
+      </div>
+      <div class="nilai-col">
+        <h3>Gotong royong</h3>
+        <p>Pengelolaan lahan dan air dijalankan bersama, mengikuti semangat kolektif seperti sistem subak.</p>
+      </div>
+      <div class="nilai-col">
+        <h3>Regenerasi, bukan eksploitasi</h3>
+        <p>Tanah dan air dijaga agar tetap produktif untuk musim tanam berikutnya, bukan dikuras habis untuk hasil sesaat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kontak" id="kontak">
+  <div class="wrap kontak-grid">
+    <div class="kontak-info">
+      <div class="section-label">KONTAK</div>
+      <h2 class="lead">Bicara langsung dengan BTN 165</h2>
+      <dl>
+        <div>
+          <dt>LOKASI</dt>
+          <dd>Kalimantan Timur, Indonesia</dd>
+        </div>
+        <div>
+          <dt>TELEPON / WHATSAPP</dt>
+          <dd>0838-7166-6136</dd>
+        </div>
+        <div>
+          <dt>EMAIL</dt>
+          <dd>malviejayagroup@gmail.com</dd>
+        </div>
+        <div>
+          <dt>LINKAJA (E-WALLET)</dt>
+          <dd>0838-7166-6136</dd>
+        </div>
+      </dl>
+      <p class="note">Alamat lahan belum dicantumkan — kabari saya kalau ingin ditambahkan.</p>
+      <p class="kontak-closing">Yuk kontribusi membangun negeri dengan sadar tani.</p>
+    </div>
+    <div>
+      <form onsubmit="event.preventDefault();">
+        <div>
+          <label for="nama">NAMA</label>
+          <input id="nama" type="text" placeholder="Nama lengkap" required>
+        </div>
+        <div>
+          <label for="email">EMAIL</label>
+          <input id="email" type="email" placeholder="nama@email.com" required>
+        </div>
+        <div>
+          <label for="pesan">PESAN</label>
+          <textarea id="pesan" placeholder="Tulis pertanyaan atau permintaan kerja sama"></textarea>
+        </div>
+        <button class="form-submit" type="submit">Kirim pesan</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>
+      <div class="footer-brand">BTN 165 — Bahoela Tani Nusantara</div>
+      <div class="footer-tag">Bertani baheula, panen masa kini.</div>
+    </div>
+    <div>© 2026 BTN 165. Kalimantan Timur, Indonesia.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Kalimantan Timur berada di zona WITA (UTC+8)
+  var START_DATE = new Date('2026-06-14T00:00:00+08:00');
+  var TARGET_DATE = new Date('2027-06-14T00:00:00+08:00');
+  var TOTAL_DAYS = Math.round((TARGET_DATE - START_DATE) / 86400000);
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function updateCountdown(){
+    var now = new Date();
+    var diff = TARGET_DATE - now;
+
+    if (diff <= 0){
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-minutes').textContent = '00';
+      document.getElementById('cd-seconds').textContent = '00';
+    } else {
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var minutes = Math.floor((diff % 3600000) / 60000);
+      var seconds = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-minutes').textContent = pad(minutes);
+      document.getElementById('cd-seconds').textContent = pad(seconds);
+    }
+
+    var elapsedDays = Math.floor((now - START_DATE) / 86400000) + 1;
+    if (elapsedDays < 0) elapsedDays = 0;
+    if (elapsedDays > TOTAL_DAYS) elapsedDays = TOTAL_DAYS;
+    var percent = Math.max(0, Math.min(100, (elapsedDays / TOTAL_DAYS) * 100));
+
+    document.getElementById('progress-fill').style.width = percent.toFixed(1) + '%';
+    document.getElementById('progress-day-label').textContent =
+      'Hari ke-' + elapsedDays + ' dari ' + TOTAL_DAYS;
+    document.getElementById('progress-percent-label').textContent =
+      percent.toFixed(1) + '%';
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ---- Catatan pencapaian harian (tersimpan lewat window.storage) ----
+  function todayKey(){
+    var d = new Date();
+    var y = d.getFullYear();
+    var m = pad(d.getMonth() + 1);
+    var day = pad(d.getDate());
+    return 'log:' + y + '-' + m + '-' + day;
+  }
+
+  function formatDateLabel(key){
+    var datePart = key.replace('log:', '');
+    var parts = datePart.split('-');
+    return parts[2] + '/' + parts[1] + '/' + parts[0];
+  }
+
+  var logListEl = document.getElementById('log-list');
+  var logInput = document.getElementById('log-input');
+  var logStatus = document.getElementById('log-status');
+  var logSaveBtn = document.getElementById('log-save');
+  var storageAvailable = typeof window.storage !== 'undefined';
+
+  async function loadEntries(){
+    if (!storageAvailable){
+      logListEl.innerHTML = '<div class="log-empty">Penyimpanan catatan tidak tersedia di tampilan ini.</div>';
+      return;
+    }
+    try{
+      var listResult = await window.storage.list('log:', false);
+      var keys = (listResult && listResult.keys) ? listResult.keys.slice().sort().reverse() : [];
+
+      if (keys.length === 0){
+        logListEl.innerHTML = '<div class="log-empty">Belum ada catatan. Tulis pencapaian hari ini di atas.</div>';
+      } else {
+        var html = '';
+        for (var i = 0; i < keys.length; i++){
+          var res = await window.storage.get(keys[i], false);
+          if (res && res.value){
+            html += '<div class="log-entry"><div class="log-date">' +
+              formatDateLabel(keys[i]) + '</div><div>' +
+              escapeHtml(res.value) + '</div></div>';
+          }
+        }
+        logListEl.innerHTML = html;
+      }
+
+      var todayRes = await window.storage.get(todayKey(), false).catch(function(){ return null; });
+      if (todayRes && todayRes.value){
+        logInput.value = todayRes.value;
+      }
+    } catch(err){
+      logListEl.innerHTML = '<div class="log-empty">Belum ada catatan tersimpan.</div>';
+    }
+  }
+
+  function escapeHtml(str){
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  logSaveBtn.addEventListener('click', async function(){
+    var text = logInput.value.trim();
+    if (!text){
+      logStatus.textContent = 'Tulis catatan dulu sebelum menyimpan.';
+      return;
+    }
+    if (!storageAvailable){
+      logStatus.textContent = 'Penyimpanan tidak tersedia di tampilan ini.';
+      return;
+    }
+    logSaveBtn.disabled = true;
+    logStatus.textContent = 'Menyimpan…';
+    try{
+      var result = await window.storage.set(todayKey(), text, false);
+      if (result){
+        logStatus.textContent = 'Catatan hari ini tersimpan.';
+        await loadEntries();
+      } else {
+        logStatus.textContent = 'Gagal menyimpan, coba lagi.';
+      }
+    } catch(err){
+      logStatus.textContent = 'Gagal menyimpan, coba lagi.';
+    }
+    logSaveBtn.disabled = false;
+  });
+
+  loadEntries();
+})();
+
+</script>
+</body>
+</html>
